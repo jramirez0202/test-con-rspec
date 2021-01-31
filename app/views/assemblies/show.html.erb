@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @assembly.name %>
+</p>
+
+<p>
+  <strong>Percent:</strong>
+  <%= @assembly.percent %>
+</p>
+
+<p>
+  <strong>Wine:</strong>
+  <%= @assembly.wine %>
+</p>
+
+<p>
+  <strong>Strain:</strong>
+  <%= @assembly.strain %>
+</p>
+
+<%= link_to 'Edit', edit_assembly_path(@assembly) %> |
+<%= link_to 'Back', assemblies_path %>

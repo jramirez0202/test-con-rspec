@@ -1,0 +1,41 @@
+<%= form_with(model: assembly, local: true) do |form| %>
+  <% if assembly.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(assembly.errors.count, "error") %> prohibited this assembly from being saved:</h2>
+
+      <ul>
+      <% assembly.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+
+
+<div>
+  <ul>
+    <%= form.label :Strain %>
+    <li><%= form.collection_check_boxes(:strain_id, Strain.all, :id, :name) %>
+  </ul>
+</div>
+
+  <div class="field">
+    <%= form.label :percent %>
+    <%= form.number_field :percent, in: 1..100 %>
+  </div>
+
+
+
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
