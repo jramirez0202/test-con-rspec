@@ -8,8 +8,5 @@
 
 	<% if user_signed_in? %>
 		<strong> Sign out here ---> </strong> <%= link_to 'Sign out', destroy_user_session_path, method: :delete %> <br>
-	<% else %>
-		<strong> Sign up here ---> </strong> <%= link_to 'Sign up', new_user_registration_path %> <br>
-		<strong> Sign in here ---> </strong> <%= link_to 'Login', new_user_session_path %> <br>
 	<% end %>
 			

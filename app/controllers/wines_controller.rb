@@ -22,7 +22,9 @@ class WinesController < ApplicationController
   # GET /wines/1/edit
   def edit
     @strains = Strain.all
+    @oenologists = Oenologist.all
     @wine.strains.build
+    @wine.critics.build unless @wine.critics.present?
   end
 
   

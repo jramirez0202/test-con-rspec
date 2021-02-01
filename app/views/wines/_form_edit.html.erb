@@ -24,10 +24,18 @@
 </div>
 
 <div class = 'links'>
-  <%=link_to_add_association 'Add assembly', form, :assemblies %>
+  <%=link_to_add_association 'Add Strain', form, :assemblies %>
 </div>
 
+<div id='critics'>
+  <%= form.fields_for :critics do |ff|%>
+    <%= render 'critic_fields', :f => ff%>
+  <% end %>
+</div>
 
+<div class = 'links'>
+  <%=link_to_add_association 'Add critic', form, :critics %>
+</div>
 
   <div class="actions">
     <%= form.submit %>
