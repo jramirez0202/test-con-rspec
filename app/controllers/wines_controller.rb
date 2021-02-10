@@ -31,8 +31,6 @@ class WinesController < ApplicationController
     @wine.critics.build unless @wine.critics.present?
   end
 
-  
-
   # POST /wines
   # POST /wines.json
   def create
