@@ -7,6 +7,7 @@
     <tr>
       <th>Name</th>
       <th>Strains Percent</th>
+      <th>Critics</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,9 +23,16 @@
               <% end %>
             </ul>
           </td>
-        
+        <td>
+          <ul>
+            <% wine.critics.each do |critics|%>
+              <li><%= critics.oenologist.name%> Score</li>
+            <% end %>
+          </ul>
+        </td>
         
           <% if current_user.admin%>
+            <td><%= link_to 'Show', wine %></td>
             <td><%= link_to 'Edit', edit_wine_path(wine) %></td>
             <td><%= link_to 'Destroy', wine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% end %>

@@ -1,16 +1,19 @@
 class WinesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show ]
   before_action :set_wine, only: [:show, :edit, :update, :destroy]
 
   # GET /wines
   # GET /wines.json
   def index
     @wines = Wine.all
+    @oenologist = Oenologist.all
   end
 
   # GET /wines/1
   # GET /wines/1.json
   def show
+    @wine = Wine.all
+    
   end
 
   # GET /wines/new
@@ -21,7 +24,8 @@ class WinesController < ApplicationController
 
   # GET /wines/1/edit
   def edit
-    @strains = Strain.all
+    # byebug
+    @strains = Strain.pluck :name, :id
     @oenologists = Oenologist.all
     @wine.strains.build
     @wine.critics.build unless @wine.critics.present?
@@ -33,7 +37,7 @@ class WinesController < ApplicationController
   # POST /wines.json
   def create
     @wine = Wine.new(wine_params)
-
+    @strains = Strain.pluck :name, :id
     respond_to do |format|
       if @wine.save
         format.html { redirect_to wines_path, notice: 'Wine was successfully created.' }
@@ -48,6 +52,8 @@ class WinesController < ApplicationController
   # PATCH/PUT /wines/1
   # PATCH/PUT /wines/1.json
   def update
+    @oenologists = Oenologist.all
+    @strains = Strain.pluck :name, :id
     respond_to do |format|
       if @wine.update(wine_params)
         format.html { redirect_to @wine, notice: 'Wine was successfully updated.' }
